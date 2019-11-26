@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Password Generator</title>
+  </head>
+  <body>
+    <header>
+      <h1>Password Generator</h1>
+    </header>
+    <h2>Generate a Password</h2>
+    <textarea
+      readonly
+      id="password"
+      placeholder="Your Secure Password"
+      aria-label="Generated Password"
+    ></textarea>
+    <button onclick= "generate()" id="generate">Generate Password</button>
+    <button id="copy">
+      Copy to Clipboard
+    </button>
+
+    <script>
+    function generate() {
+      //prompt user character length
+      var passLength = prompt("How many characters would you like your password to be? (Between 8-128 characters!)");
+          //Check to see if between character parameter
+          if (passLength < 8 || passLength > 128) {
+              alert("Character count not accepted! Must be between 8 and 128 Characters!");
+              generate();
+          }
+          else {}
+      //string of special characters, took out 'space' and 'quotation mark'
+      var specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+      //string of possible numbers
+      var numericChar = "0123456789";
+      //string of uppercase letters
+      var upperChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      //string of lowercase letters
+      var lowerChar = "abcdefghijklmnopqrstuvwxyz";
+      
+      //Confirm what characters the user wants in password 
+      var spec = confirm("Do you want your password to include Special Characters?");
+      var numeric = confirm("Do you want your password to include Numeric Characters?");
+      var upper = confirm("Do you want your password to include Uppercase Characters?");
+      var lower = confirm("Do you want your password to include Lowercase Characters?");
+
+      // function genSpecial() {
+      //     var specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+      //     console.log(specialChar[Math.floor(Math.random() * specialChar.length)]);
+      // }
+
+      // function genNumeric() {
+      //     var numericChar = "0123456789";
+      //     console.log(numericChar[Math.floor(Math.random() * numericChar.length)]);
+      // }
+
+      // function genUpper() {
+      //     var upperChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      //     console.log(upperChar[Math.floor(Math.random() * upperChar.length)]);
+      // }
+
+      // function genLower() {
+      //     var lowerChar = "abcdefghijklmnopqrstuvwxyz";            
+      //     console.log(lowerChar[Math.floor(Math.random() * lowerChar.length)]);
+      // }
+
+      // //array of functions
+      // var options = [genSpecial(), genNumeric(), genUpper(), genLower()];
+
+      // function randomFunctionOrder(){
+      //     var options = [genSpecial(), genNumeric(), genUpper(), genLower()];
+      //     var passLength;
+      //     for (var i = 0; i <= passLength; i++) {
+      //     console.log(options[Math.floor(Math.random())]);
+      //     }
+      // }
+      
+      
+      //create function that will need 'length' and 'what characters desired' in order to create random password
+      function password(passLength, holder) {
+          var passwordRandom = "";
+
+          for (var i = 0; i < passLength; i++) {
+          passwordRandom += holder.charAt(Math.floor(Math.random() * holder.length)); 
+      }
+      console.log(passwordRandom);
+}
+
+    //All possible choices for user in terms of character types (this needs work for sure!!!!)
+     if (spec && numeric && lower && upper) {
+         holder = specialChar + numericChar + lowerChar + upperChar;
+         password(passLength, holder);
+     }
+     else if (spec && numeric && lower) {
+         holder = specialChar + numericChar + lowerChar;
+         password(passLength, holder);
+     }
+     else if (spec && numeric) {
+         holder = specialChar + numericChar;
+         password(passLength, holder);
+     }
+     else if (spec && numeric && upper) {
+         holder = specialChar + numericChar + upperChar;
+         password(passLength, holder);
+     }
+     else if (spec && lower && upper) {
+         holder = specialChar + lowerChar + upperChar;
+         password(passLength, holder);
+     }
+     else if (numeric && lower && upper) {
+         holder = numericChar + lowerChar + upperChar;
+         password(passLength, holder);
+     }
+     else if (spec && upper) {
+         holder = specialChar + upperChar;
+         password(passLength, holder);
+     }
+     else if (spec && lower) {
+         holder = specialChar + lowerChar;
+         password(passLength, holder);
+     }
+     else if (numeric && upper) {
+         holder = numericChar + upperChar;
+         password(passLength, holder);
+     }
+     else if (numeric && lower) {
+         holder = numericChar + lowerChar;
+         password(passLength, holder);
+     }
+     else if (spec && numeric && lower && upper) {
+         holder = specialChar + numericChar + lowerChar + upperChar;
+         password(passLength, holder);
+     }
+     else if (lower && upper) {
+         holder = lowerChar + upperChar;
+         password(passLength, holder);
+     }
+     else if (spec) {
+         holder = specialChar;
+         password(passLength, holder);
+     }
+     else if (numeric) {
+         holder = numericChar;
+         password(passLength, holder);
+     }
+     else if (lower) {
+         holder = lowerChar;
+         password(passLength, holder);
+     }
+     else if (upper) {
+         holder = upperChar;
+         password(passLength, holder);
+     }
+     else {
+         alert("Could not generate password! Must approve at least one of the four Character types!")
+     }
+    }
+      
+      </script>
+  </body>
+</html>
