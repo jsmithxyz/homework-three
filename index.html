@@ -4,39 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Calistoga&display=swap" rel="stylesheet">
     <title>Password Generator</title>
   </head>
   <body>
-    <header>
-      <h1>Password Generator</h1>
-    </header>
-    <h2>Generate a Password</h2>
-    <textarea id="password" type ="text">Your Secure Password</textarea>
-    <button onclick= "generate()" id="generate">Generate Password</button>
-    <button onclick= "copyToClip()" id= "copy">
-      Copy to Clipboard
-    </button>
+    <nav class="navbar navbar-inverse bg-white justify-content-center">
+      <a href= "index.html" class="navbar-brand mb-0 h1" id="navbar">Jordan Smith's Password Generator</a>
+    </nav>
+    <div class="container">
+    <div class="row" id="row1">
+    <div class="form-group shadow-textarea">
+        <textarea readonly class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" type="text"></textarea>
+    </div>
+    </div>
+    <div class="row" id="row2">
+    <div class="buttonbox">
+        <button type="button" class="btn btn-primary btn-lg" onclick= "generate()" id="generate">Generate Password</button>
+        <button type="button" class="btn btn-primary btn-lg" onclick= "copyToClip()" id= "copy" >Copy to Clipboard</button>
+    </div>
+    </div>
+    </div>
 
     <script>
+    //Function that executes 'Copy to Clipboard' button on click
     function copyToClip(){
-      var copyResult = document.getElementById('password');
+      var copyResult = document.getElementById('exampleFormControlTextarea6');
       copyResult.select();
       copyResult.setSelectionRange(0, 999999);
       document.execCommand("copy"); 
     }
+    //Function that executes 'Generate Password' button on click
     function generate() {
       //prompt user character length
       var passLength = prompt("How many characters would you like your password to be? (Between 8-128 characters!)");
           //Check to see if between character parameter
           if (passLength < 8 || passLength > 128) {
               alert("Character count not accepted! Must be between 8 and 128 Characters!");
+              return;
+          }
+          else if(isNaN(passLength) === true) {
+              alert("Character count must be in number format!")
+              return;
           }
           else {}
-          
+      //empty string
+      var holder = "";   
       //string of special characters, took out 'space' and 'quotation mark' to avoid confusion
       var specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
       //string of possible numbers
-      var numericChar = "0123456789";
+      var numericChar = "01234567890123456789";
       //string of uppercase letters
       var upperChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       //string of lowercase letters
@@ -56,10 +78,11 @@
           passwordRandom += holder.charAt(Math.floor(Math.random() * holder.length)); 
       }
       return passwordRandom;
+      
       }
     
     //User choice possibilities
-    if((spec === false) && (numeric === false) && (lower === false) && (upper === false)) {
+    if((spec === false) && (numeric === false) && (upper === false) && (lower === false)) {
       alert("You must choose at least one type of character to build a password!")
     }
     if(spec) {
@@ -68,15 +91,15 @@
     if(numeric) {
         var holder = holder += numericChar;
     }
-    if(lower) {
-        var holder = holder += lowerChar;
-    }
     if(upper) {
         var holder = holder += upperChar;
     }
-    document.getElementById('password').innerHTML= password(passLength, holder);
+    if(lower) {
+        var holder = holder += lowerChar;
     }
-  
+    document.getElementById('exampleFormControlTextarea6').innerHTML= password(passLength, holder);
+    }
+
       </script>
   </body>
 </html>

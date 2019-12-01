@@ -1,0 +1,106 @@
+body {
+    height: 100%;
+    background-color: black;
+}
+
+.container {
+    height: 100vh;
+    width: 960px;
+}
+#row1, #row2 {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.form-control.z-depth-1 {
+    height: 200px;
+    width: 650px;
+    margin: auto;
+}
+
+#exampleFormControlTextarea6 {
+    margin-top: 100px;
+    background-color: white;
+    font-family: 'Calistoga', cursive;
+    font-size: 2em;
+}
+
+.buttonbox {
+    display: flex;
+    justify-content: center;
+}
+
+.btn.btn-primary.btn-lg {
+    margin: 20px;
+}
+
+#generate {
+    background-color: black;
+    border-color: white;
+    font-family: 'Calistoga', cursive;
+}
+
+#copy {
+    background-color: black;
+    border-color: white;
+    font-family: 'Calistoga', cursive;
+}
+
+.navbar-brand {
+    font-family: 'Calistoga', cursive;
+    color: black;
+    -webkit-text-fill-color: white; 
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: black;
+
+}
+
+#navbar {
+    font-size: 3.5em;
+}
+
+@media screen and (max-width: 940px) {
+    #navbar {
+        font-size: 2.5em;
+    }
+    .navbar-brand {
+        font-family: 'Calistoga', cursive;
+        color: black;
+        -webkit-text-fill-color: white; 
+        -webkit-text-stroke-width: 2.5px;
+        -webkit-text-stroke-color: black; 
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #navbar {
+        font-size: 2em;
+    }
+    .navbar-brand {
+        font-family: 'Calistoga', cursive;
+        color: black;
+        -webkit-text-fill-color: black; 
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black; 
+    }
+    .form-control.z-depth-1 {
+        height: 200px;
+        width: 400px;
+        margin: auto;
+    }  
+}
+@media screen and (max-width: 575px) { 
+    .container {
+        width: 300px;
+    }
+    #navbar {
+        font-size: 1.6em;
+    }
+    .form-control.z-depth-1 {
+        height: 400px;
+        width: 400px;
+        margin: auto;
+    } 
+}
