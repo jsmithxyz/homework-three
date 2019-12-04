@@ -6,9 +6,16 @@ This password generator will produce a password based off of a user's answer to 
 
 Files included:
     index.html,
+<<<<<<< HEAD
     style.css,
     script.js,
     generator.jpeg
+=======
+    style.css
+    
+# Access
+The Random Password Generator can be accessed at https://jsmithxyz.github.io/homework-three/ 
+>>>>>>> 612e88e5010c69d3213dfd50caa69548834ed6ca
 
 # Installation
 Generator built with Bootstrap Components and a layer of CSS for some extra styling. Functionality built with Javascript. Fonts used are a Google Font.
@@ -16,6 +23,10 @@ Generator built with Bootstrap Components and a layer of CSS for some extra styl
 # Usage
 When the 'Generate Password' button is clicked, user will be prompted to input desired password length (length must be in number format). Additionally, 4 confirmation questions will follow for the user to approve desired characters to be included in the random password. Once the password is displayed in the textbox, user can then click the 'Copy to Clipboard' button to copy the displayed password.
 
+<<<<<<< HEAD
 
 
+=======
+![generator](https://user-images.githubusercontent.com/56512278/70152658-a009b280-167b-11ea-842b-f90b8553a323.jpeg)
+>>>>>>> 612e88e5010c69d3213dfd50caa69548834ed6ca
 
